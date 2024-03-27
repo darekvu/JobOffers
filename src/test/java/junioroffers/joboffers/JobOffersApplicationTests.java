@@ -1,4 +1,4 @@
-package darek.joboffers;
+package junioroffers.joboffers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
