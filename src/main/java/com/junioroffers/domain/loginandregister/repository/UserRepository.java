@@ -1,4 +1,6 @@
-package com.junioroffers.domain.loginandregister;
+package com.junioroffers.domain.loginandregister.repository;
+
+import com.junioroffers.domain.loginandregister.model.User;
 
 import java.util.Optional;
 

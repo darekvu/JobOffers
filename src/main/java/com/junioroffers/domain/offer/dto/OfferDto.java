@@ -1,2 +1,4 @@
-package com.junioroffers.domain.offer.dto;public record OfferDto() {
+package com.junioroffers.domain.offer.dto;
+
+public record OfferDto() {
 }

@@ -1,10 +1,15 @@
-package com.junioroffers.domain.loginandregister;
+package com.junioroffers.domain.loginandregister.repository;
 
 
+import com.junioroffers.domain.loginandregister.model.User;
+import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class UserTestRepositoryImpl implements UserRepository {
     Map<Long, User> usersMemoryDB = new ConcurrentHashMap<>();
 
@@ -19,12 +24,7 @@ public class UserTestRepositoryImpl implements UserRepository {
     @Override
     public User save(User user) {
         usersMemoryDB.put(user.getId(), user);
-        return User.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .build();
-
+        return user;
     }
 
 }
