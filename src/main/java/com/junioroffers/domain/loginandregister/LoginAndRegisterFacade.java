@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class LoginAndRegisterFacade {
     private final UserRepository userRepository;
 
-    public UserDto selectUserByUsername(String username) {
+    public UserDto findUserByUsername(String username) {
         User foundUser = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with %s username not found", username)));
 

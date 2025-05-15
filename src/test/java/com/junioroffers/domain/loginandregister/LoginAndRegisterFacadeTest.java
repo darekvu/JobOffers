@@ -4,11 +4,9 @@ import com.junioroffers.domain.loginandregister.dto.RegistrationResponseDto;
 import com.junioroffers.domain.loginandregister.dto.UserDto;
 import com.junioroffers.domain.loginandregister.dto.UserRegisterRequestDto;
 import com.junioroffers.domain.loginandregister.exception.UsernameNotFoundException;
-import com.junioroffers.domain.loginandregister.repository.UserTestRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,9 +27,9 @@ class LoginAndRegisterFacadeTest {
     void should_find_user_by_username() {
 //         Given
         UserRegisterRequestDto user = new UserRegisterRequestDto("example", "password");
-        RegistrationResponseDto registeredUser = underTest.registerUser(user);
+        underTest.registerUser(user);
 //         When
-        UserDto userDto = underTest.selectUserByUsername(user.username());
+        UserDto userDto = underTest.findUserByUsername(user.username());
 //         Then
         assertThat(userDto.username()).isEqualTo("example");
         assertThat(userDto.password()).isEqualTo("password");
@@ -44,7 +42,7 @@ class LoginAndRegisterFacadeTest {
         String username = "example";
         //When
         //Then
-        assertThatThrownBy(() -> underTest.selectUserByUsername(username))
+        assertThatThrownBy(() -> underTest.findUserByUsername(username))
                 .isInstanceOf(UsernameNotFoundException.class)
                 .hasMessageContaining(String.format("User with %s username not found", username));
     }
